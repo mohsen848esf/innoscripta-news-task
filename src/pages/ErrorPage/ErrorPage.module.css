@@ -1,0 +1,8 @@
+.page {
+  width: min(100% - 40px, 760px);
+  margin: 80px auto;
+}
+.page a {
+  display: inline-block;
+  color: var(--color-accent);
+}
