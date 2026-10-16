@@ -1,0 +1,24 @@
+.select :global(.filter__control) {
+  min-height: 44px;
+  border-color: var(--color-border);
+  border-radius: 5px;
+  box-shadow: none;
+}
+.select :global(.filter__control--is-focused) {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent);
+}
+.select :global(.filter__menu) {
+  z-index: 20;
+}
+.select :global(.filter__multi-value) {
+  background: var(--color-accent-soft);
+}
+.select :global(.filter__option--is-focused) {
+  background: var(--color-accent-soft);
+  color: var(--color-text);
+}
+.select :global(.filter__option--is-selected) {
+  background: var(--color-accent);
+  color: white;
+}

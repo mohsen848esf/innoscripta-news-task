@@ -1,0 +1,21 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 32px;
+}
+.pagination [aria-current] {
+  background: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+  opacity: 1;
+}
+@media (max-width: 600px) {
+  .pagination {
+    gap: 5px;
+  }
+  .pagination button {
+    padding: 8px 10px;
+  }
+}

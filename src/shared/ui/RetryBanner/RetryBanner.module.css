@@ -1,0 +1,8 @@
+.notice {
+  font-size: 13px;
+  color: #942f23;
+  overflow-wrap: anywhere;
+}
+.notice p {
+  margin-bottom: 8px;
+}
