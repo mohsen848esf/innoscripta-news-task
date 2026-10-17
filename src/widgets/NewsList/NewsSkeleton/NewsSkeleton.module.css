@@ -1,0 +1,30 @@
+.card {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: white;
+  overflow: hidden;
+  padding-bottom: 30px;
+}
+.card div {
+  aspect-ratio: 16/9;
+  background: var(--color-accent-soft);
+}
+.card p {
+  margin: 20px;
+  height: 18px;
+  background: #efefeb;
+  border-radius: 4px;
+  animation: pulse 1.2s ease-in-out infinite alternate;
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+@keyframes pulse {
+  to {
+    opacity: 0.45;
+  }
+}

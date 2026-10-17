@@ -1,0 +1,13 @@
+.intro {
+  margin-bottom: 30px;
+}
+.intro h1 {
+  font-size: 34px;
+  font-weight: 650;
+  letter-spacing: -1px;
+}
+@media (max-width: 720px) {
+  .intro h1 {
+    font-size: 30px;
+  }
+}
