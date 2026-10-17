@@ -1,0 +1,17 @@
+.form {
+  display: grid;
+  gap: 16px;
+}
+.form > p {
+  font-size: 14px;
+  color: var(--color-muted);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.actions button:last-child {
+  margin-left: auto;
+}
