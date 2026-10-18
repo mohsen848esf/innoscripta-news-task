@@ -25,8 +25,17 @@ export const useMobileFilters = () => {
     if (!element) return;
 
     element.close();
-    if (!mobile) element.show();
-    else if (open) element.showModal();
+    if (!mobile) {
+      element.show();
+      if (
+        document.activeElement instanceof HTMLElement &&
+        element.contains(document.activeElement)
+      ) {
+        document.activeElement.blur();
+      }
+    } else if (open) {
+      element.showModal();
+    }
   }, [mobile, open]);
 
   const close = () => {
