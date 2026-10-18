@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { isSameFilter } from "@/entities/news/lib/search-params";
+import { useEffect, useState } from "react";
+import { isSameFilter, validateFilterInputs } from "@/entities/news/lib/search-params";
+import { initialSearchState } from "@/entities/news/lib/options";
 import type { SavedFeed } from "../types";
 import type { Search } from "@/entities/news/model/types";
 import { useSavedFeedsStorage } from "./useSavedFeedsStorage";
@@ -16,10 +17,23 @@ export const useSavedFeedControls = (
   );
 
   const [modal, setModal] = useState<"new" | "edit" | null>(null);
-
   const [notice, setNotice] = useState("");
 
   const selected = saved.feeds.find((feed) => feed.id === selectedId);
+
+  useEffect(() => {
+    if (isSameFilter(search, initialSearchState)) {
+      if (!selected || !isSameFilter(selected.search, initialSearchState)) {
+        setSelectedId("");
+      }
+      return;
+    }
+
+    const exactMatch = saved.feeds.find((feed) => isSameFilter(feed.search, search));
+    if (exactMatch && exactMatch.id !== selectedId) {
+      setSelectedId(exactMatch.id);
+    }
+  }, [search, saved.feeds, selected, selectedId]);
   const select = (id: string) => {
     setSelectedId(id);
     setNotice("");
@@ -69,7 +83,7 @@ export const useSavedFeedControls = (
     modal,
     setModal,
     notice,
-    disabled: !isSameFilter(search, search),
+    disabled: !!saved.readError || validateFilterInputs(search).length > 0,
     changed: !!selected && !isSameFilter(selected.search, search),
     select,
     saveName,
