@@ -82,7 +82,12 @@ export const useFilterForm = (
   });
 
   const clear = () => {
-    const cleared = updateFilterField(initialSearchState, { provider: values.provider });
+    const defaultSort = values.provider === "newsapi" ? "default" : "newest";
+    const cleared: Search = {
+      ...initialSearchState,
+      provider: values.provider,
+      sort: defaultSort,
+    };
     form.reset(cleared);
     onSearch(cleared);
   };

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   generateSearchQueryParams,
   getFiltersFromUrl,
+  updateFilterField,
   validateFilterInputs,
 } from "@/entities/news/lib/search-params";
 import { initialSearchState } from "@/entities/news/lib/options";
@@ -53,5 +54,13 @@ describe("Search parameter serialization and validation", () => {
     };
     const errors = validateFilterInputs(search);
     expect(errors).toContain("Enter a keyword to sort by relevance.");
+  });
+
+  it("resets sort to newest when switching to non-headlines provider", () => {
+    const updated = updateFilterField(initialSearchState, {
+      provider: "guardian",
+    });
+    expect(updated.provider).toBe("guardian");
+    expect(updated.sort).toBe("newest");
   });
 });

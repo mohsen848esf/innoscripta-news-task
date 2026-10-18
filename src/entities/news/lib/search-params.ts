@@ -187,6 +187,7 @@ export const updateFilterField = (current: Search, patch: Partial<Search>): Sear
     return {
       ...initialSearchState,
       provider: patch.provider,
+      sort: patch.provider === "newsapi" ? "default" : "newest",
     };
   }
 
