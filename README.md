@@ -9,7 +9,7 @@
 ## Environment Variables
 
 First, prepare your environment variables:
-- In the "master" branch, make a copy of `.env.example` and rename it to `.env.local`:
+- In the "main" branch, make a copy of `.env.example` and rename it to `.env.local`:
   ```bash
   cp .env.example .env.local
   ```
